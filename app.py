@@ -14,12 +14,15 @@ def definition(_word):
     # Load dictionary from data.json
     data = json.load(open("data.json"))
     
-    # Forcing user input to lowercase to search data.json
+    # # Forcing user input to lowercase to search data.json
     _word=_word.lower()
 
     # Word found
     if _word in data:
         return data[_word]
+    # Checks for proper nouns    
+    elif _word.capitalize() in data:
+        return data[_word.capitalize()]
     
     # Word not found. Check for up to 3 similar words using get_close_matches()
     elif _word not in data:
