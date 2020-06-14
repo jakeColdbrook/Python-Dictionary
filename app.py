@@ -14,12 +14,14 @@ def definition(_word):
     # Load dictionary from data.json
     data = json.load(open("data.json"))
     
-    # Forcing user input to lowercase to search data.json
-    _word=_word.lower()
 
-    # Word found
-    if _word in data:
-        return data[_word]
+    # Checks for word in lowercase, as a title, and uppercase
+    if _word.lower() in data:
+        return data[_word.lower()]
+    elif _word.title() in data:
+        return data[_word.title()]
+    elif _word.upper() in data:
+        return data[_word.upper()]
     
     # Word not found. Check for up to 3 similar words using get_close_matches()
     elif _word not in data:
